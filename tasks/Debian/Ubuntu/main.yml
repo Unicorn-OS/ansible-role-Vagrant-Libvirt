@@ -1,0 +1,19 @@
+---
+#- name: Ubuntu source
+#  include_tasks: "source/{{ Ubuntu_source }}.yml"
+
+- name: Install libvirt
+  apt:
+    pkg:
+    - qemu-kvm
+    - libvirt-daemon-system
+    - libvirt-clients
+    - bridge-utils
+  become: true
+
+- name: Install Vagrant for libvirt
+  apt:
+    pkg:
+    - vagrant
+    - vagrant-libvirt
+  become: true
